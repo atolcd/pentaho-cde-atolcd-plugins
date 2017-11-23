@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<plugin title="atolcd" loader="DEFAULT">
+	<overlays>
+		<overlay id="startup.atolcd" resourcebundle="content/atolcd/resources/lang/messages">
+			<menubar id="toolsmenu">
+	        	<menuitem id="atolcd" label="${Launcher.atolcd}" command="mantleXulHandler.openUrl('${Launcher.atolcd}','${Launcher.atolcd_TOOLTIP}','plugin/atolcd/api/default')"/>
+	      	</menubar>
+	    </overlay>
+	</overlays>
+	<lifecycle-listener class="pt.webdetails.cpk.CpkLifecycleListener"/>
+	<static-paths>
+		<static-path url="/atolcd/js" localFolder="js"/>
+		<static-path url="/atolcd/static" localFolder="static"/>
+		<static-path url="/atolcd/resources" localFolder="resources"/>
+	</static-paths>
+	<content-types>
+		<content-type>
+			<title>Atolcd</title>
+			<description></description>
+			<company name="" url="" logo="@PLUGIN_COMPANY_LOGO@"></company>
+		</content-type>
+	</content-types>
+	<content-generator
+		id="atolcd"
+		title="Atolcd"
+		type="atolcd"
+		class="pt.webdetails.cpk.CpkContentGenerator"/>
+	<!-- Menu entry -->
+	<menu-items>
+		<!--<menu-item id="atolcd_main" anchor="tools-submenu" label="Atolcd" command="content/atolcd/" type="MENU_ITEM" how="LAST_CHILD"/>-->
+	</menu-items>
+	<external-resources>
+		<file context="requirejs">content/atolcd/js/atolcd-require-js-cfg.js</file>
+	</external-resources>
+</plugin>

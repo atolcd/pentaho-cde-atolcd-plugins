@@ -1,0 +1,118 @@
+/*!
+ * Copyright 2017 Atol Conseils et Développements
+ *
+ * Licensed under the Apache License, Version 2.0 (the "License");
+ * you may not use this file except in compliance with the License.
+ * You may obtain a copy of the License at
+ *
+ *     http://www.apache.org/licenses/LICENSE-2.0
+ *
+ * Unless required by applicable law or agreed to in writing, software
+ * distributed under the License is distributed on an "AS IS" BASIS,
+ * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+ * See the License for the specific language governing permissions and
+ * limitations under the License.
+ */
+
+/*---- General ----*/
+
+.vertical-middle {
+	vertical-align: middle;
+}
+
+
+/*---- Title ----*/
+
+.svg-component-title {
+	display: block;
+	width: 100%;
+	font-size: 14px;
+	font-weight: bold;
+	background-color: whitesmoke;
+	text-align: left;
+	margin: 0 0 20px 0;
+	padding: 5px;
+	box-shadow: 5px 5px 5px 0px #dddddd;
+}
+
+
+/*---- Legend ----*/
+
+#svgComponentLegendContainer {
+	display: flex;
+	flex-flow: row wrap;
+	justify-content: space-around;
+	margin: 10px 0;
+	padding: 10px;
+	border: 1px solid #CCC;
+}
+
+.svg-component-legend-column {
+	display: inline-block;
+}
+
+.svg-component-legend-line {
+	margin: 5px 0;
+}
+
+.svg-component-legend-item {
+	display: inline-block;
+	width: 25px;
+	height: 20px;
+	margin: 0 10px 0 0;
+	border: 1px solid #CCC;
+	vertical-align: middle;
+}
+
+.svg-component-legend-item.unchecked {
+	background: repeating-linear-gradient(
+		45deg,
+		transparent,
+		transparent 2px,
+		#CCC 2px,
+		#CCC 4px
+	);
+}
+
+.svg-component-legend-item-label {
+	display: inline;
+	vertical-align: middle;
+}
+
+
+/*---- Tooltip ----*/
+
+.svg-component-tooltip-outer-container {
+	position: absolute;
+	max-width: 300px;
+}
+
+.svg-component-tooltip-container {
+	background-color: #515151;
+	color: white;
+	padding: 10px;
+	border: 1px solid white;
+	border-radius: 12px;
+}
+
+.svg-component-tooltip-item {
+	display: block;
+	width: 100%;
+	margin: 0 0 2px 0;
+}
+
+
+/*---- Dynamic selectors ----*/
+
+#svgComponentDynamicSelectorsContainer {
+	display: flex;
+	flex-flow: row wrap;
+	justify-content: space-between;
+	margin: 20px 0;
+	padding: 10px;
+	border: 1px solid #CCC;
+}
+
+.svg-component-dynamic-selector {
+	margin: 10px;
+}
