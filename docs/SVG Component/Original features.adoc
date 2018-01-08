@@ -1,0 +1,23 @@
+= SVG Component - Original features
+
+ifdef::env-github,env-browser[:outfilesuffix: .adoc]
+
+<<README{outfilesuffix}#,Back to main index>>
+
+'''
+
+Benefiting from the specified standard properties, SVG Component already possesses fundamental features of a CDE component, such as the lifecycle functions, the “*Parameters*” and “*Listeners*” properties, and especially the “*Parameter*” property. So, by developing a new component, we have already easily solved one of the problems residing inside the former solution.
+
+Moreover, with the “*Datasource*” property, you can fetch data related to the entities on the SVG image from a datasource, then display them in the tooltip and / or transmit them to other components by clicking on the entities. The component datasource is not mandatory. If it is not specified, SVG Component can be considered as a select component, where clicking on an entity on the SVG image means making a selection.
+
+. <<features/The%20two%20entry%20modes%20for%20SVG%20content{outfilesuffix}#,The two entry modes for SVG content>>
+. <<features/Ratio%20control{outfilesuffix}#,Ratio control>>
+. <<features/SVG%20graphic%20title{outfilesuffix}#,SVG graphic title>>
+. <<features/Input%20interface%20for%20the%20legend{outfilesuffix}#,Input interface for the legend>>
+. <<features/Colorization%20of%20entities%20on%20the%20SVG%20image{outfilesuffix}#,Colorization of entities on the SVG image>>
+. <<features/Colorization%20filtering{outfilesuffix}#,Colorization filtering>>
+. <<features/Tooltip{outfilesuffix}#,Tooltip>>
+. <<features/Click%20and%20interactions%20with%20other%20components{outfilesuffix}#,Click and interactions with other components>>
+. <<features/The%20dynamic%20selectors{outfilesuffix}#,The dynamic selectors>>
+. <<features/Zoom{outfilesuffix}#,Zoom>>
+. <<features/The%20export%20button%20function{outfilesuffix}#,The export button / function>>

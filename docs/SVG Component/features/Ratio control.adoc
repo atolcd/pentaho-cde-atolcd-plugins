@@ -1,0 +1,22 @@
+= SVG Component - Ratio control
+
+ifdef::env-github,env-browser[:outfilesuffix: .adoc]
+
+ifdef::env-github[]
+:note-caption: :information_source:
+:tip-caption: :bulb:
+:important-caption: :heavy_exclamation_mark:
+:warning-caption: :warning:
+endif::[]
+
+<<../README{outfilesuffix}#,Back to main index>>
+
+<<../Original%20features{outfilesuffix}#,Back to Original features>>
+
+'''
+
+In a general context, you usually have an SVG file with predefined width and height values. So, when you incorporate this SVG image into a dashboard using SVG Component, its dimensions are not always appropriate. If so, you can use the “*Ratio*” property to adjust the 2 dimensions all at the same time, given that the proportion between them must be preserved.
+
+The default value of this property is *100* (%). You can choose a value greater than 100 to enlarge the SVG image, or a value greater than 0 and less than 100 to reduce it. If you enter 0 or a negative number, the SVG image will not be displayed.
+
+NOTE: Even if you remove the default value 100 and let this property undefined, its value will be considered as 100.

@@ -1,0 +1,17 @@
+= SVG Component - The export button / function
+
+ifdef::env-github,env-browser[:outfilesuffix: .adoc]
+:imagesdir: ../images
+
+<<../README{outfilesuffix}#,Back to main index>>
+
+<<../Original%20features{outfilesuffix}#,Back to Original features>>
+
+'''
+
+The last notable feature is the export feature. It allows you to export the whole SVG image and all graphical elements currently contained within. Therefore, you can produce a unique PNG image containing at the same time the SVG image, the colorization, the default color of the entities, the color filtering and zooming effects.
+
+Again, in order not to overload SVG Component with too many features right from the start, the “*exportButtonEnabled*” property is at “*False*” by default, thus the export button will not be displayed if you do not wish so.
+
+.Exporting SVG image to PNG
+image::zoomExport.png[Exporting SVG image to PNG]

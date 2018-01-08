@@ -1,17 +1,19 @@
-Pentaho CDE Atol CD plugins
+Pentaho CDE Atol CD Plugins
 ================================
 
 This project provides you CDE components developed by [Atol Conseils et Développements (Atol CD)](http://www.atolcd.com), including **SVG Component**.
 
-[Pentaho CDE Atol CD plugins Home page](https://github.com/atolcd/pentaho-cde-atolcd-plugins/)
+Works with Pentaho 6.0 and above.
+
+[Pentaho CDE Atol CD Plugins home page](https://github.com/atolcd/pentaho-cde-atolcd-plugins/)
 
 Installation instructions
 ---------------------
 1. **Install the Pentaho plug-in atolcd:** start Pentaho BI Server and open it in a browser; search for the plug-in atolcd in Pentaho Marketplace and install its latest version; clear browser’s cache and restart Pentaho server.
-2. **Include Atolcd input types:** reopen Pentaho User Console in browser; open the installation page of atolcd plug-in (menu Tools > Atolcd); click on the button “Include ATOL CD input types”; clear browser’s cache and restart Pentaho server.
+2. **Include Atol CD input types:** reopen Pentaho in browser; open the installation page of atolcd plug-in (menu Tools > Atol CD Plugins); click on the button “Click here to finish plugin installation”; clear browser’s cache and restart Pentaho server.
 3. **Installation complete**.
 
-To get more information about this plugin, see our [documentation](https://github.com/atolcd/pentaho-cde-atolcd-plugins/blob/master/).
+To get more information about this plugin, please refer to our [documentation](https://github.com/atolcd/pentaho-cde-atolcd-plugins/blob/master/docs/SVG%20Component/README.adoc).
 
 
 Contributing

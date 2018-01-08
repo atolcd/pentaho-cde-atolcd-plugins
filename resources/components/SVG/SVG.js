@@ -29,10 +29,10 @@ var SVGComponent = UnmanagedComponent.extend({
 		var render = _.bind(this.render, this);
 		
 		if (typeof datasource !== 'undefined') {
-			this.queryDefinition.dataSource = datasource;
+			this.queryDefinition.dataAccessId = datasource;
 		}
 		
-		if (typeof this.queryDefinition.dataSource !== 'undefined') {
+		if (typeof this.queryDefinition.dataAccessId !== 'undefined') {
 			this.triggerQuery(this.queryDefinition, render);
 		} else {
 			this.synchronous(render);
@@ -60,7 +60,7 @@ var SVGComponent = UnmanagedComponent.extend({
 		}
 		
 		if (typeof svgDatasource !== 'undefined') {
-			var query = this.dashboard.getQuery({dataSource: svgDatasource});
+			var query = this.dashboard.getQuery({dataAccessId: svgDatasource});
 			
 			query.setOption('params', this.svgDatasourceParameters);
 			
@@ -690,7 +690,7 @@ var SVGComponent = UnmanagedComponent.extend({
 	genIndicatorSelector: function() {
 		var comp = this;
 		var ph = this.placeholder();
-		var selectedDatasource = this.queryDefinition.dataSource;
+		var selectedDatasource = this.queryDefinition.dataAccessId;
 		var indicatorOptions = '<option disabled="">-</option>\n';
 		
 		$.each(this.indicatorMapping, function(i, indicator) {

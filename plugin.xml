@@ -3,7 +3,7 @@
 	<overlays>
 		<overlay id="startup.atolcd" resourcebundle="content/atolcd/resources/lang/messages">
 			<menubar id="toolsmenu">
-	        	<menuitem id="atolcd" label="${Launcher.atolcd}" command="mantleXulHandler.openUrl('${Launcher.atolcd}','${Launcher.atolcd_TOOLTIP}','plugin/atolcd/api/default')"/>
+	        	<menuitem id="atolcd" label="${Launcher.atolcd}" command="mantleXulHandler.openUrl('${Launcher.atolcd}','${Launcher.atolcd_TOOLTIP}','plugin/atolcd/api/main')"/>
 	      	</menubar>
 	    </overlay>
 	</overlays>

@@ -1,0 +1,74 @@
+= SVG Component - Standard properties
+
+ifdef::env-github,env-browser[:outfilesuffix: .adoc]
+
+ifdef::env-github[]
+:note-caption: :information_source:
+:tip-caption: :bulb:
+:important-caption: :heavy_exclamation_mark:
+:warning-caption: :warning:
+endif::[]
+
+<<README{outfilesuffix}#,Back to main index>>
+
+'''
+
+CDE already contains a fairly large number of standard and generic properties. By making use of several standard properties, SVG Component provides fundamental functions of a basic CDE component.
+
+NOTE: Although the input and storage modes of each property are constrained by its associated input and output types, the logic behind it might be different from one component to another, for its behaviors are freely defined inside components' JS files.
+
+[cols="2,8"]
+|===
+|Property|Utility
+
+|Title
+|Can be used as title of the SVG graphic.
+
+|Parameter
+|Indicate the parameter whose value will be modified by this component.
+
+|Listeners
+|Indicate the parameters, changes coming from which will be listened by this component.
+
+|Parameters
+|Associative array mapping dashboard parameters to query parameters.
+
+|Datasource
+|Indicate the name of the datasource associated with this component.
+
+|HtmlObject
+|Indicate the name of the layout element associated with this component.
+
+|Execute at start
+|Indicate whether this component will be executed at the initialization of the dashboard.
+
+|Pre Execution
+|Lifecycle function preceding the execution of this component.
+
+|Post Execution
+|Lifecycle function succeeding the execution of this component.
+
+|Post Fetch
+|Lifecycle function, to which data returned by the associated query is passed, that performs some operations defined by the user on these data.
+
+|Pre Change
+|Lifecycle function preceding the notification of changes coming from the parameter affected by this component. Can be used for validating the changed value.
+
+|Post Change
+|Lifecycle function succeeding the notification of changes coming from the parameter affected by this component. Can be used for performing operations after the changes.
+
+|Tooltip
+|Information to display when hovering over this component.
+
+|clickAction
+|Callback function, to which data returned by the associated query and related to the clicked entity is passed, that is executed when the user clicks on an entity of the SVG image.
+
+|legendClickMode
+|Indicate the behavior of the component on clicking on legend items, depending on the selected option.
+
+|tooltipEnabled
+|Indicate whether the tooltip will be displayed when hovering over the entities of the SVG image.
+
+|tooltipFormat
+|Callback function, to which data returned by the associated query and related to the hovered entity is passed, that allows tooltip customization.
+|===

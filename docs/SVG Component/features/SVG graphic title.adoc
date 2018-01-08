@@ -1,0 +1,12 @@
+= SVG Component - SVG graphic title
+
+ifdef::env-github,env-browser[:outfilesuffix: .adoc]
+
+<<../README{outfilesuffix}#,Back to main index>>
+
+<<../Original%20features{outfilesuffix}#,Back to Original features>>
+
+'''
+
+You can specify a title for each SVG Component graphic, with the “*Title*” property. The title is always placed above the SVG graphic. It is the only element that will always be displayed, even if the SVG image is not displayed because of an error related to the SVG content. +
+Moreover, you can personalize the title using the “*titleFormat*” property. This property takes as value a JavaScript function, to which the title is passed so that you can make use of it, that returns the HTML-formatted title. If you do not specify any format, a basic predefined format will be applied.

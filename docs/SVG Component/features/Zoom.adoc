@@ -1,0 +1,13 @@
+= SVG Component - Zoom
+
+ifdef::env-github,env-browser[:outfilesuffix: .adoc]
+
+<<../README{outfilesuffix}#,Back to main index>>
+
+<<../Original%20features{outfilesuffix}#,Back to Original features>>
+
+'''
+
+In some cases, there might be too many entities on an SVG image, so that visualizing them becomes difficult. You can then use the zoom feature to improve visualization, by changing the “*zoomEnabled*” property to “*True*”. You will see 3 little buttons at the bottom right corner of your SVG image: “*+*” for zooming in, “*-*” for zooming out and a reset button for returning the image to its original state. Furthermore, you can move the image to visualize the entities that may interest you.
+
+By default, the “*zoomEnabled*” property is at “*False*”, thus the zoom feature is disabled, for dashboard scrolling and zooming might intertwine and probably create bad user experience.

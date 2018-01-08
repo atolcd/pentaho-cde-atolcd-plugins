@@ -1,0 +1,25 @@
+= SVG Component - Click and interactions with other components
+
+ifdef::env-github,env-browser[:outfilesuffix: .adoc]
+
+ifdef::env-github[]
+:note-caption: :information_source:
+:tip-caption: :bulb:
+:important-caption: :heavy_exclamation_mark:
+:warning-caption: :warning:
+endif::[]
+
+<<../README{outfilesuffix}#,Back to main index>>
+
+<<../Original%20features{outfilesuffix}#,Back to Original features>>
+
+'''
+
+Like the colorization and tooltip features, the click mechanism is also based on ids. +
+For all SVG entities having the “*id*” attribute, when clicking on one of them, the value of its “*id*” attribute will be retrieved, and the value of the parameter specified in the “*Parameter*” property will be changed to this value. This value change will then be propagated to components listening to this parameter. Thus, the value transmitted to other components is the id of the clicked entity.
+
+To personalize the actions following a click on an SVG entity, you just need to define them in the “*clickAction*” property. This property takes as value a JavaScript function, to which data related to the clicked entity on the SVG image is passed, that contains desired actions to be executed when the click happens. +
+Only when there is an id matching between the clicked SVG entity and a record in data returned by the component datasource, data related to this id will be loaded to your clickAction function as argument for its only parameter. +
+If there is no id matching, you will not have access to data related to the clicked entity, but you will still have access to the DOM object of this entity, thus to all of its attributes, similarly to the “*tooltipFormat*” property.
+
+NOTE: The “*clickAction*” property is extremely useful when you just want to transmit data related to the clicked SVG entity to a simple HTML element and not a heavy component equipped with the listening mechanism.

@@ -1,0 +1,62 @@
+= SVG Component - The two entry modes for SVG content
+
+ifdef::env-github,env-browser[:outfilesuffix: .adoc]
+
+ifdef::env-github[]
+:note-caption: :information_source:
+:tip-caption: :bulb:
+:important-caption: :heavy_exclamation_mark:
+:warning-caption: :warning:
+endif::[]
+
+:sectnums:
+
+<<../README{outfilesuffix}#,Back to main index>>
+
+<<../Original%20features{outfilesuffix}#,Back to Original features>>
+
+'''
+
+One of the most important features of SVG Component is the automated entry of SVG content. In fact, the copy-paste of SVG content to an Html element in the former solution presents a great risk for data integrity. Therefore, SVG files must be selected and loaded directly from file system or Pentaho repository.
+
+== SVG file
+
+This feature is implemented through the “*SVG file*” property, associated with the “*SvgFile*” input type. It has the 3 following buttons:
+
+* *“Local” button:* for loading SVG files from file system.
+* *“^” button:* for loading SVG files from Pentaho repository.
+* *“...” button:* for visualizing and modifying SVG content inside SVG files.
+
+When you click on the “Local” button, a classic dialog box for file selection will appear, filtering by default only SVG files. You can still choose “All Files” in order to select an SVG file without the “.svg” extension. However, there is a strict extension verification mechanism behind: a pop-up will appear asking you to select a file with the “.svg” extension, and the inappropriate selection will be discarded. Then, you will choose the repository folder where the SVG file will be stored. By default, the folder containing the current dashboard will be selected. You will also be asked to enter a name for the repository file. This name is identical to the local file name by default. Even if you try to enter a name not ending with “.svg”, this extension will be added at the end of the repository file name. Thus, an SVG file will be created in the Pentaho repository with the same content as the local SVG file, and the path to this repository file will be stored in the “*SVG file*” property. Consequently, the process of saving SVG content is automated and customizable, also you can avoid any kind of copy-paste errors.
+
+When you click on the second button, you will just need to select the Pentaho repository folder containing the SVG file. Thanks to the extension filter, only files ending with “.svg” will be displayed. You select the appropriate SVG file, and the path to this file will be stored in “*SVG file*”.
+
+When you click on the last button, you will be able to visualize the content of the SVG file stored in Pentaho repository. You can also modify this content.
+
+WARNING: If you select an SVG file from file system having the same name as a repository SVG file in the same repository folder, the latter will be overwritten with the content of the former, without any confirmation dialog. You need to clear browser’s cache so that Pentaho takes into account changes in the SVG content.
+
+== SVG datasource
+
+The “*SVG file*” property is well suited for standard needs, but you can go further, loading dynamically your SVG content from a datasource. In order to do this, you must use the “*SVG datasource*” property, a datasource dedicated for the SVG content and distinct from the one of the “*Datasource*” property. Obviously, you could have specific parameters for this datasource. If so, you should use the “*SVG datasource parameters*”, which is similar to the “*Parameters*” property but dedicated for the SVG datasource.
+
+== Usage rules
+
+Since there are 2 different entry modes for SVG content, several rules have been established:
+
+* If there is neither SVG file nor SVG datasource, only the title will be displayed. All other elements of the component will not appear until an SVG content is loaded.
+* If there is no SVG datasource, the content inside the SVG file will be loaded.
+* If there is an SVG datasource, the SVG content extracted from it will always have a higher priority than the one from the SVG file. Consequently, if these two properties are all specified, the content from the SVG file will never be loaded. There is only one exception: if the SVG datasource return nothing, then the SVG file content will be used.
+
+If the SVG datasource name is not correctly entered, no SVG image will be displayed, and there will be the error “Error processing component” instead.
+
+If the path to the SVG file is not correctly set and there is no SVG datasource, no SVG image will be displayed, and there will be an error instead.
+
+This way, if you want a fixed SVG source (SVG file), you should not specify any dynamic source (SVG datasource).
+
+== Rules for SVG content
+
+SVG Component is suited for all kinds of SVG content, from geographical maps to complex graphics (hemicycle distribution, metro map, etc.). You should nonetheless verify and normalize your SVG content before using SVG Component:
+
+* Only one “*svg*” tag is permitted and embraces all others containers and graphical elements.
+* The “*id*” attribute must be specified for each entity which you need to colorize and for which you need to load related data. These ids must be unique, and be present in the associated datasource so that related data could be mapped and loaded.
+* Essential attributes of the “*svg*” tag (“*width*”, “*height*”, “*viewBox*”) should be specified.

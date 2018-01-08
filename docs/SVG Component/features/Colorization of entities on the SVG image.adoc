@@ -1,0 +1,24 @@
+= SVG Component - Colorization of entities on the SVG image
+
+ifdef::env-github,env-browser[:outfilesuffix: .adoc]
+
+ifdef::env-github[]
+:note-caption: :information_source:
+:tip-caption: :bulb:
+:important-caption: :heavy_exclamation_mark:
+:warning-caption: :warning:
+endif::[]
+
+<<../README{outfilesuffix}#,Back to main index>>
+
+<<../Original%20features{outfilesuffix}#,Back to Original features>>
+
+'''
+
+With a well defined legend, SVG Component will be able to colorize entities on the SVG image, which is the most valuable and remarkable graphical feature of this component.
+
+Depending on the choices of value type and statistical method, corresponding classification function will be applied. At the end of the classification process, classes and their limits are well defined. Then, the principal value (at the 2nd column) of each data record will be compared to the limits, in order to find the class where it belongs. The corresponding id will be associated with the color value of that class.
+
+Given that the SVG content is normalized with the “*id*” attribute on each entity, the entity having the same id as the above data record will be found using jQuery, and the corresponding color will be applied on it. The entities which do not have matching ids in the component datasource will not be colorized.
+
+NOTE: If there is no item in the legend, the “*Legend*” property will have an empty array as its value. Therefore, there will not be any colorization whatsoever.

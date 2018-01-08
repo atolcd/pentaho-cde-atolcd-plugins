@@ -1,0 +1,109 @@
+= SVG Component - Input interface for the legend
+
+ifdef::env-github,env-browser[:outfilesuffix: .adoc]
+:imagesdir: ../images
+
+ifdef::env-github[]
+:note-caption: :information_source:
+:tip-caption: :bulb:
+:important-caption: :heavy_exclamation_mark:
+:warning-caption: :warning:
+endif::[]
+
+:sectnums:
+
+<<../README{outfilesuffix}#,Back to main index>>
+
+<<../Original%20features{outfilesuffix}#,Back to Original features>>
+
+'''
+
+One of the most important features of SVG Component is the entry mechanism for legend information. With the former solution, you have to manually code the whole legend. With SVG Component, you only have to input strictly related legend information into the “*Legend*” property, and the legend will be automatically generated for you.
+
+.Legend input interface
+image::legendInputInterface.png[Legend input interface]
+
+== General description
+
+It is basically a two-dimensional array, with 4 columns (“*Label*”, “*Min*”, “*Max*” and “*Color*”), and as many lines as there are legend items. In addition, there are 3 selectors for the customization of value type, statistical method and color theme, and 2 checkboxes for color inversion and auto labels.
+
+The “*Label*” column indicates the label corresponding to each legend item. +
+The “*Min*” and “*Max*” columns indicate its inferior and superior limits. +
+The “*Color*” column indicates the color code in hexadecimal or the color name that represents its color. +
+There is also a graphical representation for each color next to the “*Color*” column. These visual colors will help you in the determination of SVG entities colorization.
+
+You can add new lines / legend items by clicking on the “*Add*” button, and remove lines using the “*x*” button at the beginning of each line. Furthermore, you can move lines, thus change their order, by dragging and dropping them with the last button on each line.
+
+== Labels handling
+
+An item label might be very long and part of it might be hidden. You can hover over labels to reveal their whole content (only if the content length exceeds the label case length).
+
+Legend item labels are often normal strings, but there are also labels containing only their corresponding limits (e.g. “0 - 10”). In order to automate label content in the same style (“*<min> - <max>*”), you just need to check the “*Auto labels*” checkbox. Consequently, the “*Label*” column will be disabled, so that users will not input custom texts.
+
+== Statistical methods
+
+Sometimes, you want to define yourself the limits for each item; sometimes, you just want some mathematical methods to decide them for you. In general, when the component datasource returns data, one column of the resultset will be used as the principal value for color assignment (the 2nd column). This column forms a data series, on which statistical analysis methods can be applied. This analysis will classify data in this series into legend groups / classes, with their limits automatically calculated. You can choose the most adequate statistical method for your data among the suggested below, knowing that they are the most well-known or interesting ones:
+
+* *Equal intervals:* the series will be divided into k classes whose interval (distance between the min and max values) is constant.
+* *Quantiles:* the series will be divided into k classes having the same number of elements.
+* *Standard deviation:* the interval of all classes is equal to the standard deviation of the series, starting from the mean value.
+* *Jenks natural breaks:* in each class, values are as close to each other as possible; classes are as far to each other as possible.
+* *K-means:* the series is divided into k classes / clusters, so that the distance between elements and the center of each class is minimized.
+* *Arithmetic progression:* the limits of all classes form an arithmetic sequence.
+* *Geometric progression:* the limits of all classes form a geometric sequence.
+
+When you choose one of these methods, since limits will be automatically calculated, the “*Min*” and “*Max*” columns will be disabled. Besides, some of these statistical methods have constraints that you should take into account.
+
+Regarding the standard deviation method, since the standard deviation of a data series is fixed, there is a fixed maximal number of classes containing the elements of the series. The further a class is from the mean value, the less elements of the series it contains. At a given moment, too far away classes will not contain any elements of the series. Consequently, if the maximal number of classes is exceeded, there will be classes / legend items not represented on the SVG image. If so, you should notice these classes and reduce the number of classes.
+
+Regarding the geometric progression method, there must not be any zeros or negative numbers in the series. The reason is that the logarithm of the limits will be calculated, and that the logarithm of 0 or negative numbers will render a math error. If your data series does contain 0 or negative numbers, there will be errors and you should fix your data or choose another statistical method.
+
+Regarding the Jenks natural breaks and K-means methods, if the number of classes is greater than the number of values in the series, there will be an error message in the web console. In these cases, the classification will no longer serve any purpose, so you should make sure that the number of classes is always less than or equal to the number of values in the series.
+
+NOTE: If a class generated by one of these methods has only one limit, it is the only value in the class. If it has 2 limits, the min value is not included. There is an exception for the K-means method where all the 2 limits are included.
+
+NOTE: Arithmetic progression and geometric progression are very well suited for series having a great degree of dispersion. The latter increases faster than the former. The Jenks natural breaks and K-means methods often render the same result, and they are the recommended classification methods in most cases. But you are free to choose the most suitable statistical method for each of your data series.
+
+== Manual entry methods
+
+Besides the statistical methods, you can also choose among the manual entry methods for the limits:
+
+* *User defined classification:* you enter yourself all limits, knowing that there is a validation mechanism.
+* *Unique values:* each class contains only one value. This option is dedicated to data well divided into distinct levels. There is also a validation mechanism for this option.
+
+== Colors and themes
+
+Regarding color information entry, you can enter a hexadecimal color code or a color name. If this value is correctly entered, the related color will be graphically represented on the right, so that you can have a quick overview of this color. Otherwise, the incorrect color value will be considered as transparent, and the corresponding legend item will not be correctly represented on the legend.
+
+You only need to enter color values when you choose the “*Manual*” option in the color theme selector. Each other option is attached to a predefined color theme, which means a predefined array of hexadecimal color codes.
+
+There is an algorithm redistributing the colors of a given color theme into the cases of the “*Color*” column while lines are added, removed or moved, in order to preserve the coherence within the color theme and also to increase as much contrast between colors as possible. Since each color theme has a limited number of colors, if the number of classes exceeds this number, the last classes will not have any color assigned, and they will be removed when you submit the legend input information.
+
+In general, low values are usually linked to light colors, and high values to darker ones. In some cases, for example when the “Green” color theme is used to represent the pollution state, you will want to reverse the color order. If so, you just need to check the “*Inverse*” checkbox (and uncheck it whenever you want).
+
+== Value type
+
+Values represented by the colorization on the SVG image are not necessarily numeric. They can very well be nominal values. +
+For example, on a presidential election map, the colors usually represent political parties voting distribution. Therefore, you can choose between numeric and nominal value type. +
+By default, “*Numeric*” is selected. If you select the “*Nominal*” option, the “*Min*” and “*Max*” columns will be disabled, and you can enter directly the nominal values to be displayed on the legend in the “*Label*” column. Also, as statistical methods cannot be applied on nominal values, when “*Nominal*” is selected, the input method will be automatically changed to “*User defined classification*”, and the statistical method selector will be disabled.
+
+== Validation mechanism
+
+Given the complexity of legend information, input errors may probably exist, and they can be more or less serious. A semantic error is hardly detectable, as the legend will be always displayed and the entities always colorized. However, if it is a classification error, it will lead to a misguided colorization, without you noticing. That’s why, we have implemented a data validation mechanism:
+
+* Labels are not subjected to validation. Even though a legend having unspecified labels is often considered as of poor quality, users are free to decide on this matter.
+* Limits (min and max values) are subjected to validation only when a manual entry method is selected. For the “*User defined classification*” option, each line must have the 2 limits, except the min value of the first line and the max value of the last line which are not mandatorily required. Each min value must be less than the max value of the same line, and greater than or equal to the max value of the preceding line. For the “*Unique values*” option, the unique value of each line must be specified. It must be greater than the value of the preceding line. For all these two options, the limits must be in numeric format so that they can be compared. A case containing an invalid value will have red border, and when hovered, a tooltip containing the rule to follow appears.
+* Color values are mandatory. If a color value is not specified, the corresponding line will be removed when the legend input information is submitted.
+* If at least one limit case is in red, the “*OK*” button of the interface will be disabled. Only when all errors are corrected, this button will be re-enabled.
+* Limits validation is not necessary for automatic statistical methods. When users change from a manual entry method to an automatic one, all validation marks will be wiped off.
+
+== Formatting
+
+If the “*Auto labels*” checkbox is checked, legend item labels will be formatted and thus normalized (when the legend is displayed on the dashboard):
+
+* If a limit is less than 1000, it is rounded to 2 decimal places.
+* If a limit is greater than or equal to 1000, digits after the decimal mark are not significant, this value will be rounded to units.
+* The decimal mark and the thousands separator will be rendered in accordance with each country’s own rules (e.g. a comma and a space in France, respectively).
+* If a manual entry method is selected, digits after the decimal mark will be preserved, in order to respect user intention.
+
+To change this formatting and to personalize furthermore the legend, you can use the “*legendFormat*” property. This property takes as value a JavaScript function, to which data related to the legend is passed, that returns the HTML-formatted custom legend. If you do not specify any format, a basic predefined format will be applied.

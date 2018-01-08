@@ -1,0 +1,48 @@
+= SVG Component - Tooltip
+
+ifdef::env-github,env-browser[:outfilesuffix: .adoc]
+
+ifdef::env-github[]
+:note-caption: :information_source:
+:tip-caption: :bulb:
+:important-caption: :heavy_exclamation_mark:
+:warning-caption: :warning:
+endif::[]
+
+:sectnums:
+
+<<../README{outfilesuffix}#,Back to main index>>
+
+<<../Original%20features{outfilesuffix}#,Back to Original features>>
+
+'''
+
+The colorization already gives you a clear idea on the distribution of values on the SVG graphic and helps you to easily memorize it. In addition, the tooltip will bring you detailed additional information related to each of the entities on the SVG image when hovering over them.
+
+For SVG entities having the “*id*” attribute, when hovering over one of them, SVG Component will find, among data returned by the component datasource, a data record having the same id as the hovered entity. If so, a standard tooltip will be generated next to the hovered entity, containing all data related to it.
+
+== Data displaying mechanism
+
+The tooltip mechanism for CCC charts is rather complex, whereas SVG Component’s does not need that complexity. Therefore, we have created a whole new one adapted to SVG Component.
+
+Below is the data displaying mechanism for the tooltip:
+
+* The first 2 columns of the data resultset must be id and the principal value that will be used for the colorization, respectively.
+* All subsequent columns are additional information.
+* All columns of the data resultset will be displayed in the same order in the tooltip.
+
+These rules are quite intuitive for CTools developers, with a natural order (key - value). Moreover, they just need to include desired data (after the id and principal value columns) if they want them to be displayed in the tooltip as additional information.
+
+In addition to data returned by the component datasource, sometimes you might want to also display parameters listened by SVG Component in the tooltip. If so, the “*Parameters to display*” property is ready to be used. It has the same input mode as the “*Parameters*” property, except that the first column is for the display name of the parameters to display, and the second column is for those parameters themselves. They will be added at the end of the tooltip, after all other information.
+
+== Formatting
+
+In the tooltip, numeric values will be formatted so that the thousands separator and the decimal mark will correspond to each country’s own rules and that digits after the decimal mark will be all kept, in order to preserve data integrity.
+
+To change this formatting and to personalize furthermore the tooltip, you can use the “*tooltipFormat*” property. This property takes as value a JavaScript function, to which data related to the hovered entity on the SVG image is passed, that returns the HTML-formatted custom tooltip. If you do not specify any format, a basic predefined format will be applied.
+
+NOTE: You also have access to the DOM object of the hovered entity when using “*tooltipFormat*”, via the keyword “*this*”. This is particularly useful when there is no component datasource. You can then add fixed data as attributes of the entities on the SVG graphic, and use them later in your tooltipFormat function.
+
+By default, the “*tooltipEnabled*” property is set to “*True*”. If you do not want any tooltip, just set it to “*False*”.
+
+NOTE: Even if you remove the default value and let this property undefined, it will be considered as “*True*”.

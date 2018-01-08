@@ -1,0 +1,30 @@
+= SVG Component - Colorization filtering
+
+ifdef::env-github,env-browser[:outfilesuffix: .adoc]
+
+ifdef::env-github[]
+:note-caption: :information_source:
+:tip-caption: :bulb:
+:important-caption: :heavy_exclamation_mark:
+:warning-caption: :warning:
+endif::[]
+
+<<../README{outfilesuffix}#,Back to main index>>
+
+<<../Original%20features{outfilesuffix}#,Back to Original features>>
+
+'''
+
+Pentaho CDE already has some kind of graphical elements filtering inside CCC charts, through the “*legendClickMode*” property (though the “*ToggleSelected*” option does not work properly).
+
+As the filtering feature of SVG Component is not entirely the same as CCC charts’, we have developed ex nihilo the logic behind the “*legendClickMode*” property, so that it implements the following filtering mechanism:
+
+* The “*None*” option selected: clicking on legend items will do nothing.
+* The “*ToggleVisible*” option selected: when clicking on a legend item for the first time, the corresponding color will disappear on the SVG image, and gray hatching lines will appear on this item, marking that its color is being hidden on the graphic. When clicking on the same item for the second time, its color will reappear on the graphic, and the hatching lines will disappear.
+* The “*ToggleSelected*” option selected: when clicking on a legend item for the first time, all legend item colors will disappear at once, except the color corresponding to the clicked item. Also, gray hatching lines will appear on all legend items, except the clicked one. When clicking on the same item for the second time, the SVG graphic will regain the whole initial colorization, and the hatching lines will all disappear. When clicking on a legend item while another was already clicked, the focused color will switch to the color corresponding to the most recently clicked item, and the hatching lines will be changed accordingly.
+
+WARNING: Note that if there is a CSS class defining a color, totally distinct from the legend colors, that will be used each time users select an entity on the SVG image, the selected entities colorized with this distinct color will not have their color hidden. This is a comprehensible incoherence, you just need to restore the legend colors, remove the selection on entities and redo the click on legend items.
+
+By default, this “*legendClickMode*” property is set to “*ToggleVisible*”, since it is the one option that fits users’ needs in most cases and that is easy to use.
+
+NOTE: If you do not specify any function for the “*legendFormat*” property, you can fully benefit from this colorization filtering feature. Otherwise, you will need to reimplement it inside the “*Post Execution*” property if you want to use it.

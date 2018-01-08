@@ -1,0 +1,70 @@
+= SVG Component installation
+
+ifdef::env-github,env-browser[:outfilesuffix: .adoc]
+
+ifdef::env-github[]
+:note-caption: :information_source:
+:tip-caption: :bulb:
+:important-caption: :heavy_exclamation_mark:
+:warning-caption: :warning:
+endif::[]
+
+:sectnums:
+
+<<README{outfilesuffix}#,Back to main index>>
+
+'''
+
+== Prerequisites
+
+Below are the prerequisites for SVG Component:
+
+* An operational *Pentaho BI Platform* (preferably version *6.0* or higher).
+* *CTools (CDA, CDF, CDE)* and *Pentaho Marketplace* already installed. These Pentaho plug-ins are installed by default in Pentaho 6.0 and above.
+
+== Plug-in content
+
+SVG Component is included inside the Pentaho plug-in *atolcd*, and contains:
+
+* *“component.xml”*: the XML metadata file describing the structure of the editor HTML page to be built by Pentaho server and to be rendered by browsers for this specific component.
+* *“SVGComponent.js”* and *“SVG.js”*: the JavaScript files defining all behaviors of the component and how it will be rendered in CDE dashboards.
+* *“SVGComponent.css”*: the CSS file containing specific CSS classes for this component.
+* The *4 JavaScript libraries* that it depends on, including “geostats.min.js”, “simple-statistics.min.js”, “svg-pan-zoom.min.js” and “saveSvgAsPng.js”.
+
+== Installation instructions
+
+SVG Component is a *CDE component* and a plug-in conceived for *CDE*, whereas CDE itself is a plug-in of *Pentaho BI Platform*. In order to install SVG Component on CDE and Pentaho, you should complete the following steps:
+
+. *Install the Pentaho plug-in atolcd:* start Pentaho BI Server and open it in a browser; search for the plug-in *atolcd* in Pentaho Marketplace and install its latest version; clear browser’s cache and restart Pentaho server.
+. *Include Atol CD input types:* reopen Pentaho in browser; open the installation page of *atolcd* plug-in (menu *Tools > Atol CD Plugins*); click on the button “*Click here to finish plugin installation*”; clear browser’s cache and restart Pentaho server.
+. *Installation complete*.
+
+{empty} +
+
+Above is the standard installation process for Pentaho 6.0 and above, and RequireJS dashboards.
+
+IMPORTANT: Atol CD input types inclusion is compulsory, otherwise you will not be able to input information into the 3 properties “*SVG file*”, “*Legend*” and “*indicatorMapping*”. Input types are JavaScript objects defining the way data are input into properties. Each property is associated with exactly one input type, but each input type can be associated with many properties. The association between properties and input types is described in “*component.xml*”.
+
+IMPORTANT: Browser’s cache clearing and Pentaho server restart are also compulsory. The restart will allow Pentaho server to identify the new plug-in *atolcd* and to render the new *SVG Component*. Major browsers often store JS and CSS files in their cache so that data can be served faster in the future. Therefore, cache clearing will force browsers to update CDE interface with the new SVG Component. These two actions will also help updating an old version of SVG Component.
+
+NOTE: We have tested this installation process on *Pentaho 5.x*. You will need to install the specific and corresponding version of SVG Component for Pentaho 5.x, containing some minor changes compared to its standard version. Also, you cannot properly open the installation page of atolcd plug-in (incompatibilities with old versions of Pentaho). Thus, you have to manually include Atol CD input types, by opening the file */pentaho-solutions/system/pentaho-cdf-dd/editor.includes.properties* and add the path to the JS file containing these input types: “*../atolcd/js/cdf-dd-components-atolcd.js,*” at the end of the line “*scripts=[...]*”.
+
+{empty} +
+
+For *legacy / non RequireJS dashboards*, in order to use the export feature, you will need to proceed as follows:
+
+. In the Layout Panel, add a new JS resource as a code snippet with the following code:
+ 
+ define = undefined;
+ 
+. In the same panel, add a new JS resource as an external file, and choose the JS library “*saveSvgAsPng.js*” in your file system. You can select the version of this library on which SVG Component depends (*1.1.0*), or your own copy of this library downloaded beforehand from the Internet. Note that this library must be placed below the above code snippet.
+
+{empty} +
+
+There is another way to deploy SVG Component without installing the plug-in *atolcd*:
+
+. Go to the *https://github.com/atolcd/pentaho-cde-atolcd-plugins[GitHub page]* of the plug-in *atolcd* and download its latest version (as a compressed file).
+. Extract the downloaded file, then compress the folder */atolcd/resources/components/SVG* as a ZIP file.
+. Start Pentaho server, upload the ZIP file to the folder *Public/cde/components* in Pentaho repository (if you cannot find it, menu *View > Show Hidden Files*).
+. Copy the file *cdf-dd-components-atolcd.js* to */pentaho-cdf-dd/js*, manually change the file *editor.includes.properties* as above (now with “*js/cdf-dd-components-atolcd.js,*”).
+. Clear browser’s cache, restart Pentaho server.

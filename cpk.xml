@@ -22,7 +22,13 @@
     </elementTypes> 
     <info>
         <CPK_version>5</CPK_version>
-        <name>Atolcd</name>
+        <description>Provides components for Community Dashboard Editor.</description>
+        <name>Atol CD Plugins</name>
+        <author_email>contact@atolcd.com</author_email>
+        <author_name>Atol CD</author_name>
+        <company_name>Atol CD</company_name>
+        <company_url>www.atolcd.com</company_url>
         <creation_date>2017-07-26</creation_date>
+        <version>1.0</version>
     </info>
 </cpk> 
