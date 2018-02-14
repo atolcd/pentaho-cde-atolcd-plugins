@@ -1,12 +1,12 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <settings>
 	<cde-styles>
-		<path>system/atolcd/resources/styles</path>
+		<path>system/atolcd-cde-plugin/resources/styles</path>
 	</cde-styles>
   	<cde-datasources/>
 	<cde-components>
 	  <!-- paths from solution with cde component definitions to be loaded-->
-	  <path>system/atolcd/resources/components</path>
-	  <path>atolcd/components</path>
+	  <path>system/atolcd-cde-plugin/resources/components</path>
+	  <path>atolcd-cde-plugin/components</path>
 	</cde-components>
 </settings>

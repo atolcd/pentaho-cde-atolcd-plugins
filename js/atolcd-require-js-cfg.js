@@ -21,16 +21,16 @@
 	var isDebug = typeof document == "undefined" || document.location.href.indexOf("debug=true") > 0;
 	
 	if (typeof KARMA_RUN !== "undefined") { // unit tests
-		requireCfg.paths['atolcd/components'] = 'resources/components';
+		requireCfg.paths['atolcd-cde-plugin/components'] = 'resources/components';
 	} else if(typeof CONTEXT_PATH !== "undefined") { // production
-		requireCfg.paths['atolcd/components'] = CONTEXT_PATH + 'api/repos/atolcd/resources/components';
+		requireCfg.paths['atolcd-cde-plugin/components'] = CONTEXT_PATH + 'api/repos/atolcd-cde-plugin/resources/components';
 	} else if(typeof FULL_QUALIFIED_URL != "undefined") { // embedded
-		requireCfg.paths['atolcd/components'] = FULL_QUALIFIED_URL + 'api/repos/atolcd/resources/components';
+		requireCfg.paths['atolcd-cde-plugin/components'] = FULL_QUALIFIED_URL + 'api/repos/atolcd-cde-plugin/resources/components';
 	} else { // build
-		requireCfg.paths['atolcd/components'] = '../resources/components';
+		requireCfg.paths['atolcd-cde-plugin/components'] = '../resources/components';
 	}
 
-	requireCfg.map['*']['atolcd/components/SVGComponent'] = 'atolcd/components/SVG/SVGComponent';
+	requireCfg.map['*']['atolcd-cde-plugin/components/SVGComponent'] = 'atolcd-cde-plugin/components/SVG/SVGComponent';
 })();
 
 (function() {

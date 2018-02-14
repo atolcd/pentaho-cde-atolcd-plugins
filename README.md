@@ -9,8 +9,8 @@ Works with Pentaho 6.0 and above.
 
 Installation instructions
 ---------------------
-1. **Install the Pentaho plug-in atolcd:** start Pentaho BI Server and open it in a browser; search for the plug-in atolcd in Pentaho Marketplace and install its latest version; clear browser’s cache and restart Pentaho server.
-2. **Include Atol CD input types:** reopen Pentaho in browser; open the installation page of atolcd plug-in (menu Tools > Atol CD Plugins); click on the button “Click here to finish plugin installation”; clear browser’s cache and restart Pentaho server.
+1. **Install the Pentaho plug-in Atol CD Plugins:** start Pentaho BI Server and open it in a browser; search for the plug-in Atol CD Plugins in Pentaho Marketplace and install its latest version; clear browser’s cache and restart Pentaho server.
+2. **Include Atol CD input types:** reopen Pentaho in browser; open the installation page of Atol CD Plugins (menu Tools > Atol CD Plugins); click on the button “Click here to finish plugin installation”; clear browser’s cache and restart Pentaho server.
 3. **Installation complete**.
 
 To get more information about this plugin, please refer to our [documentation](https://github.com/atolcd/pentaho-cde-atolcd-plugins/blob/master/docs/SVG%20Component/README.adoc).

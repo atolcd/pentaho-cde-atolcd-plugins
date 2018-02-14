@@ -42,7 +42,7 @@
      {
       "name": "expression",
       "type": "JavaScript",
-      "value": "function() {\n    var dialog = Dashboards.getComponentByName('${c:dialog}');\n    \n    sparkl.runEndpoint('atolcd', 'includeAtolcdInputTypes', {\n        success: function(data) {\n            Dashboards.decrementRunningCalls();\n            \n            var message = 'Plugin correctly installed.';\n            \n            if (data.resultset.length > 0) {\n                var resColNum = data.metadata.filter(function(column) {\n                    return column.colName == 'result';\n                })[0].colIndex;\n                \n                if (typeof resColNum !== 'undefined') {\n                    var contains = data.resultset[0][resColNum];\n                    \n                    if (contains == 'contains') {\n                        message = 'Plugin already correctly installed.';\n                    }\n                }\n            } else {\n                message = 'Transformation configuration error.';\n            }\n            \n            dialog.open({\n                message: message,\n                dialogClass: 'closeButtonVisible'\n            });\n        },\n        error: function() {\n            Dashboards.decrementRunningCalls();\n            dialog.open({\n                message: 'Error while installing plugin.',\n                dialogClass: 'closeButtonVisible'\n            });\n        }    \n    });\n} "
+      "value": "function() {\n    var dialog = Dashboards.getComponentByName('${c:dialog}');\n    \n    sparkl.runEndpoint('atolcd-cde-plugin', 'includeAtolcdInputTypes', {\n        success: function(data) {\n            Dashboards.decrementRunningCalls();\n            \n            var message = 'Plugin correctly installed.';\n            \n            if (data.resultset.length > 0) {\n                var resColNum = data.metadata.filter(function(column) {\n                    return column.colName == 'result';\n                })[0].colIndex;\n                \n                if (typeof resColNum !== 'undefined') {\n                    var contains = data.resultset[0][resColNum];\n                    \n                    if (contains == 'contains') {\n                        message = 'Plugin already correctly installed.';\n                    }\n                }\n            } else {\n                message = 'Transformation configuration error.';\n            }\n            \n            dialog.open({\n                message: message,\n                dialogClass: 'closeButtonVisible'\n            });\n        },\n        error: function() {\n            Dashboards.decrementRunningCalls();\n            dialog.open({\n                message: 'Error while installing plugin.',\n                dialogClass: 'closeButtonVisible'\n            });\n        }    \n    });\n} "
      },
      {
       "name": "failureCallback",
@@ -227,49 +227,49 @@
  "datasources": {
   "rows": [
    {
-    "id": "ATOLCD_CPKENDPOINTS",
-    "name": "ATOLCD Endpoints",
+    "id": "ATOLCD-CDE-PLUGIN_CPKENDPOINTS",
+    "name": "ATOLCD-CDE-PLUGIN Endpoints",
+    "type": "Label",
+    "typeDesc": "<i>Group</i>",
     "parent": "UnIqEiD",
     "properties": [
      {
       "name": "Group",
-      "type": "Label",
-      "value": "ATOLCD Endpoints"
+      "value": "ATOLCD-CDE-PLUGIN Endpoints",
+      "type": "Label"
      }
-    ],
-    "type": "Label",
-    "typeDesc": "<i>Group</i>"
+    ]
    },
    {
-    "id": "f2f0e205-3654-ca0d-4d78-28a6e0d066fc",
-    "meta": "CPK",
-    "meta_endpoint": "includeAtolcdInputTypes",
-    "meta_pluginId": "atolcd",
-    "parent": "ATOLCD_CPKENDPOINTS",
+    "id": "e915526d-9226-b2d6-cb0a-1a27d01069f7",
+    "type": "Componentsatolcdcdeplugin_includeAtolcdInputTypes_CPKENDPOINT",
+    "typeDesc": "includeAtolcdInputTypes Endpoint",
+    "parent": "ATOLCD-CDE-PLUGIN_CPKENDPOINTS",
     "properties": [
      {
       "name": "name",
-      "type": "Id",
-      "value": "includeAtolcdInputTypesEndpoint"
+      "value": "includeAtolcdInputTypes",
+      "type": "Id"
      },
      {
       "name": "stepName",
-      "type": "String",
-      "value": "OUTPUT"
+      "value": "OUTPUT",
+      "type": "String"
      },
      {
       "name": "kettleOutput",
-      "type": "kettleOutputCustom",
-      "value": "Inferred"
+      "value": "Inferred",
+      "type": "kettleOutputCustom"
      }
     ],
-    "rowName": "includeAtolcdInputTypes Endpoint",
-    "type": "Componentsatolcd_includeAtolcdInputTypes_CPKENDPOINT",
-    "typeDesc": "includeAtolcdInputTypes Endpoint"
+    "meta": "CPK",
+    "meta_pluginId": "atolcd-cde-plugin",
+    "meta_endpoint": "includeAtolcdInputTypes",
+    "rowName": "includeAtolcdInputTypes Endpoint"
    }
   ]
  },
- "filename": "/system/atolcd/dashboards/admin/main.cdfde",
+ "filename": "/system/atolcd-cde-plugin/dashboards/admin/main.cdfde",
  "layout": {
   "rows": [
    {

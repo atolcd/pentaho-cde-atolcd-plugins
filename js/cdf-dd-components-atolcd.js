@@ -1372,7 +1372,7 @@ var LegendRenderer = CellRenderer.extend({
 	checkColor: function(color) {
 		var tmp = $('<div style="background-color: ' + color + ';">');
 		var checkedColor = tmp.css('background-color');
-		return checkedColor != 'transparent';
+		return (checkedColor != 'transparent') && (checkedColor != 'rgba(0, 0, 0, 0)') && (checkedColor != '');
 	},
 
 	getDragIcon: function(index) {
@@ -1395,7 +1395,7 @@ var IndicatorMappingArrayRenderer = ValuesArrayRenderer.extend({
 	valTitle: 'Datasource',
 	popupTitle: 'Indicator Mapping',
 
-	valPlaceHolderText: 'Query...',
+	valPlaceHolderText: 'Datasource...',
 
 	getData: function() {
 		var data = {};
