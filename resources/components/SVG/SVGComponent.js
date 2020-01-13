@@ -102,7 +102,7 @@ define([
 			var svgFile = this.svgFile;
 			
 			if (typeof svgFile !== 'undefined') {
-				var svgFilePath = '/pentaho/plugin/pentaho-cdf-dd/api/resources' + svgFile;
+				var svgFilePath = CONTEXT_PATH + 'plugin/pentaho-cdf-dd/api/resources' + svgFile;
 				
 				$.ajax({
 					method: 'GET',
