@@ -983,10 +983,78 @@ var SVGComponent = UnmanagedComponent.extend({
 
 	/** Callback function for exporting the SVG in PNG format */
 	exportPng: function() {
-		var ph = this.placeholder();
-		var fileName = this.name.split('render_')[1].trim() + '.png';
 
-		saveSvgAsPng($(ph).find('svg').first()[0], fileName);
+		//Var required for the position of the legend svg elements
+		var svgNodeHeight = 0.0;
+		var svgNodeWidth = 0.0;
+		var legendItemXPos = 30.0;
+		var legendItemYPos = 0.0;
+		var legendItemWidth = 0.0;
+		var legendItemsTotalWidth = 0.0;
+		var heightAdded = 50.0;
+
+		//In memory canvas used to compute the pixel size of the labels
+		var canvas = document.createElement("canvas");
+		var ctx = canvas.getContext("2d");
+		ctx.font = "15px Arial";
+
+		//Value of the legend array
+		var legendItem;
+		var labelValueProperty;
+		var colorValueProperty;
+		var legendItemLabel;
+
+		//Create a copy in memory the displayed SVG
+		var ph = this.placeholder();
+		var baseSvg = $(ph).find('svg').first()[0];
+		var baseSvgChildren = baseSvg.innerHTML;
+		var fileName = this.name.split('render_')[1].trim() + '.png';
+		var hiddenSvg = baseSvg.cloneNode();
+		var svg = d3.select(hiddenSvg);
+
+		//Get the size of the displayed SVG
+		svgNodeWidth = parseFloat(baseSvg.getAttribute("width"));
+		svgNodeHeight = parseFloat(baseSvg.getAttribute("height"));
+		legendItemYPos = svgNodeHeight + 30;
+		hiddenSvg.innerHTML += baseSvgChildren;
+
+		//Create the SVG nodes for the legend and compute the size of the legend elements in order to add the required space to the SVG
+		for (i = 5; i < this.legend.length; i++) {
+			legendItem = this.legend[i];
+			colorValueProperty = legendItem[3];
+			labelValueProperty = legendItem[0];
+			legendItemLabel = labelValueProperty.length ? labelValueProperty.replace(/&#8804;/g, "<=") : "";
+			legendItemWidth = ctx.measureText(legendItemLabel).width + 30 ;
+			legendItemsTotalWidth += legendItemWidth;
+
+			if ((legendItemXPos + legendItemWidth) >= svgNodeWidth) {
+				legendItemXPos = 30;
+				legendItemYPos += 20;
+			}
+
+			svg.append("rect")
+				.attr("x", legendItemXPos)
+				.attr("y", legendItemYPos)
+				.attr("width", 30)
+				.attr("height", 15)
+				.attr("fill", colorValueProperty);
+
+			svg.append("text")
+				.attr("x", legendItemXPos + 35)
+				.attr("y", legendItemYPos + 13)
+				.attr("font-family", "Arial")
+				.attr("font-size", "15px")
+				.text(legendItemLabel);
+
+			legendItemXPos += 30.0 + legendItemWidth;
+		}
+
+		heightAdded += 30 * (legendItemsTotalWidth / svgNodeWidth);
+		svg.attr("width", svgNodeWidth)
+			.attr("height", svgNodeHeight + heightAdded)
+			.attr("viewBox", null);
+
+		svgPng.saveSvgAsPng(hiddenSvg, fileName);
 	},
 
 	/** Handle hover on the SVG entities */
