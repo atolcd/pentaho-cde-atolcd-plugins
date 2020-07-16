@@ -1054,7 +1054,7 @@ var SVGComponent = UnmanagedComponent.extend({
 			.attr("height", svgNodeHeight + heightAdded)
 			.attr("viewBox", null);
 
-		svgPng.saveSvgAsPng(hiddenSvg, fileName);
+		saveSvgAsPng(hiddenSvg, fileName);
 	},
 
 	/** Handle hover on the SVG entities */

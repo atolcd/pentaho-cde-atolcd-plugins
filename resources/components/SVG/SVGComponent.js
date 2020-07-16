@@ -21,7 +21,7 @@ define([
 	'./geostats.min',
 	'./simple-statistics.min',
 	'./saveSvgAsPng',
-	'./d3',
+	'./d3.min',
 	'./svg-pan-zoom.min',
 	'css!./SVGComponent'
 ], function (UnmanagedComponent, $, _, geostats, ss, svgPng, d3) {

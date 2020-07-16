@@ -53,7 +53,7 @@
 		<Dependency src="simple-statistics.min.js" version="4.1.0">SimpleStatistics</Dependency>
 		<Dependency src="saveSvgAsPng.js" version="1.1.0">saveSvgAsPng</Dependency>
 		<Dependency src="svg-pan-zoom.min.js" version="3.5.1">svgPanZoom</Dependency>
-		<Dependency src="d3.js" version="5.15.0">d3</Dependency>
+		<Dependency src="d3.min.js" version="5.16.0">d3</Dependency>
 	  </Dependencies>
 	  <CustomProperties>
 		<DesignerProperty>
