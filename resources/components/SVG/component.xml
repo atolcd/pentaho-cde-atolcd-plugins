@@ -1,230 +1,229 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <DesignerComponent>
-  <Header>
-	<Name>SVG Component</Name>
-	<IName>SVGComponent</IName>
-	<Description>SVG Component (by Atol Conseils et Développements - www.atolcd.com)</Description>
-	<Category>COMMUNITYCOMPONENTS</Category>
-	<CatDescription>Community Contributions</CatDescription>
-	<Type>PalleteEntry</Type>
-	<Version>1.0</Version>
-  </Header>
-  <Contents>
-	<Model>
-	  <Property name="title">title</Property>
-	  <Property>parameter</Property>
-	  <Property>listeners</Property>
-	  <Property name="parameters">xActionArrayParameter</Property>
-	  <Definition name="queryDefinition">
-		<Property type="query">dataSource</Property>
-	  </Definition>
-	  <Property>htmlObject</Property>
-	  <Property>executeAtStart</Property>
-	  <Property>preExecution</Property>
-	  <Property>postExecution</Property>
-	  <Property>postFetch</Property>
-	  <Property>preChange</Property>
-	  <Property>postChange</Property>
-	  <Property>tooltip</Property>
-	  <Property name="clickAction">cccClickAction</Property>
-	  <Property name="legendClickMode">cccLegendClickMode</Property>
-	  <Property>legendFormat</Property>
-	  <Property>titleFormat</Property>
-	  <Property name="tooltipEnabled">cccTooltipEnabled</Property>
-	  <Property name="tooltipFormat">cccTooltipFormat</Property>
-	  <Property>dynamicSelectorsEnabled</Property>
-	  <Property>indicatorMapping</Property>
-	  <Property>zoomEnabled</Property>
-	  <Property>exportButtonEnabled</Property>
-	  <Property>svgFile</Property>
-	  <Property>svgDatasource</Property>
-	  <Property>svgDatasourceParameters</Property>
-	  <Property>ratio</Property>
-	  <Property>legend</Property>
-	  <Property>paramsToDisplay</Property>
-	</Model>
-	<Implementation supportsLegacy="true" supportsAMD="true">
-	  <Code src="SVG.js" />
-	  <Styles>
-		<Style src="SVGComponent.css" version="1.0">SVGComponent</Style>
-	  </Styles>
-	  <Dependencies>
-		<Dependency src="geostats.min.js" version="1.6.0">Geostats</Dependency>
-		<Dependency src="simple-statistics.min.js" version="4.1.0">SimpleStatistics</Dependency>
-		<Dependency src="saveSvgAsPng.js" version="1.1.0">saveSvgAsPng</Dependency>
-		<Dependency src="svg-pan-zoom.min.js" version="3.5.1">svgPanZoom</Dependency>
-		<Dependency src="d3.min.js" version="5.16.0">d3</Dependency>
-	  </Dependencies>
-	  <CustomProperties>
-		<DesignerProperty>
-			<Header>
-				<Name>svgFile</Name>
-				<Parent>BaseProperty</Parent>
-				<DefaultValue></DefaultValue>
-				<Description>SVG file</Description>
-				<Tooltip>SVG file to include</Tooltip>
-				<InputType>SvgFile</InputType>
-				<OutputType>String</OutputType>
-				<Order>0</Order>
-				<Advanced>false</Advanced>
-				<Version>1.0</Version>
-			</Header>
-		</DesignerProperty>
-		<DesignerProperty>
-			<Header>
-				<Name>svgDatasource</Name>
-				<Parent>BaseProperty</Parent>
-				<DefaultValue></DefaultValue>
-				<Description>SVG datasource</Description>
-				<Tooltip>SVG datasource to include</Tooltip>
-				<InputType>Datasource</InputType>
-				<OutputType>String</OutputType>
-				<Order>1</Order>
-				<Advanced>false</Advanced>
-				<Version>1.0</Version>
-			</Header>
-		</DesignerProperty>
-		<DesignerProperty>
-			<Header>
-				<Name>svgDatasourceParameters</Name>
-				<Parent>BaseProperty</Parent>
-				<DefaultValue></DefaultValue>
-				<Description>SVG datasource parameters</Description>
-				<Tooltip>Parameters to pass to the SVG datasource</Tooltip>
-				<InputType>ValuesArray</InputType>
-				<OutputType>Array</OutputType>
-				<Order>1</Order>
-				<Advanced>false</Advanced>
-				<Version>1.0</Version>
-			</Header>
-		</DesignerProperty>
-		<DesignerProperty>
-			<Header>
-				<Name>ratio</Name>
-				<Parent>BaseProperty</Parent>
-				<DefaultValue>100</DefaultValue>
-				<Description>Ratio</Description>
-				<Tooltip>Ratio of the SVG to its original image (in percentage)</Tooltip>
-				<InputType>Float</InputType>
-				<OutputType>Number</OutputType>
-				<Order>2</Order>
-				<Advanced>false</Advanced>
-				<Version>1.0</Version>
-			</Header>
-		</DesignerProperty>
-		<DesignerProperty>
-			<Header>
-				<Name>legend</Name>
-				<Parent>BaseProperty</Parent>
-				<DefaultValue></DefaultValue>
-				<Description>Legend</Description>
-				<Tooltip>Legend included on the SVG for its understanding</Tooltip>
-				<InputType>Legend</InputType>
-				<OutputType>Array</OutputType>
-				<Order>3</Order>
-				<Advanced>false</Advanced>
-				<Version>1.0</Version>
-			</Header>
-		</DesignerProperty>
-		<DesignerProperty>
-			<Header>
-				<Name>paramsToDisplay</Name>
-				<Parent>BaseProperty</Parent>
-				<DefaultValue></DefaultValue>
-				<Description>Parameters to display</Description>
-				<Tooltip>Parameters to be displayed in the SVG tooltip and their display name</Tooltip>
-				<InputType>ValuesArray</InputType>
-				<OutputType>Array</OutputType>
-				<Order>4</Order>
-				<Advanced>false</Advanced>
-				<Version>1.0</Version>
-			</Header>
-		</DesignerProperty>
-		<DesignerProperty>
-			<Header>
-				<Name>legendFormat</Name>
-				<Parent>BaseProperty</Parent>
-				<DefaultValue></DefaultValue>
-				<Description>legendFormat</Description>
-				<Tooltip>A callback function that is called to build the legend.</Tooltip>
-				<InputType>JavaScript</InputType>
-				<OutputType>Function</OutputType>
-				<Order>317</Order>
-				<Advanced>true</Advanced>
-				<Version>1.0</Version>
-			</Header>
-		</DesignerProperty>
-		<DesignerProperty>
-			<Header>
-				<Name>titleFormat</Name>
-				<Parent>BaseProperty</Parent>
-				<DefaultValue></DefaultValue>
-				<Description>titleFormat</Description>
-				<Tooltip>A callback function that is called to build the title.</Tooltip>
-				<InputType>JavaScript</InputType>
-				<OutputType>Function</OutputType>
-				<Order>482</Order>
-				<Advanced>true</Advanced>
-				<Version>1.0</Version>
-			</Header>
-		</DesignerProperty>
-		<DesignerProperty>
-			<Header>
-				<Name>dynamicSelectorsEnabled</Name>
-				<Parent>BaseProperty</Parent>
-				<DefaultValue>false</DefaultValue>
-				<Description>dynamicSelectorsEnabled</Description>
-				<Tooltip>Indicates if the dynamic selectors are enabled.</Tooltip>
-				<InputType>Boolean</InputType>
-				<OutputType>Boolean</OutputType>
-				<Order>540</Order>
-				<Advanced>true</Advanced>
-				<Version>1.0</Version>
-			</Header>
-		</DesignerProperty>
-		<DesignerProperty>
-			<Header>
-				<Name>indicatorMapping</Name>
-				<Parent>BaseProperty</Parent>
-				<DefaultValue></DefaultValue>
-				<Description>indicatorMapping</Description>
-				<Tooltip>Mapping between indicators' names and their corresponding queries.</Tooltip>
-				<InputType>IndicatorMappingArray</InputType>
-				<OutputType>Array</OutputType>
-				<Order>541</Order>
-				<Advanced>true</Advanced>
-				<Version>1.0</Version>
-			</Header>
-		</DesignerProperty>
-		<DesignerProperty>
-			<Header>
-				<Name>zoomEnabled</Name>
-				<Parent>BaseProperty</Parent>
-				<DefaultValue>false</DefaultValue>
-				<Description>zoomEnabled</Description>
-				<Tooltip>Indicates if the zoom feature is enabled.</Tooltip>
-				<InputType>Boolean</InputType>
-				<OutputType>Boolean</OutputType>
-				<Order>542</Order>
-				<Advanced>true</Advanced>
-				<Version>1.0</Version>
-			</Header>
-		</DesignerProperty>
-		<DesignerProperty>
-			<Header>
-				<Name>exportButtonEnabled</Name>
-				<Parent>BaseProperty</Parent>
-				<DefaultValue>false</DefaultValue>
-				<Description>exportButtonEnabled</Description>
-				<Tooltip>Indicates if the export button is enabled.</Tooltip>
-				<InputType>Boolean</InputType>
-				<OutputType>Boolean</OutputType>
-				<Order>543</Order>
-				<Advanced>true</Advanced>
-				<Version>1.0</Version>
-			</Header>
-		</DesignerProperty>
-	  </CustomProperties>
-	</Implementation>
-  </Contents>
+	<Header>
+		<Name>SVG Component</Name>
+		<IName>SVGComponent</IName>
+		<Description>SVG Component (by Atol Conseils et Développements - www.atolcd.com)</Description>
+		<Category>COMMUNITYCOMPONENTS</Category>
+		<CatDescription>Community Contributions</CatDescription>
+		<Type>PalleteEntry</Type>
+		<Version>1.0</Version>
+	</Header>
+	<Contents>
+		<Model>
+			<Property name="title">title</Property>
+			<Property>parameter</Property>
+			<Property>listeners</Property>
+			<Property name="parameters">xActionArrayParameter</Property>
+			<Definition name="queryDefinition">
+				<Property type="query">dataSource</Property>
+			</Definition>
+			<Property>htmlObject</Property>
+			<Property>executeAtStart</Property>
+			<Property>preExecution</Property>
+			<Property>postExecution</Property>
+			<Property>postFetch</Property>
+			<Property>preChange</Property>
+			<Property>postChange</Property>
+			<Property>tooltip</Property>
+			<Property name="clickAction">cccClickAction</Property>
+			<Property name="legendClickMode">cccLegendClickMode</Property>
+			<Property>legendFormat</Property>
+			<Property>titleFormat</Property>
+			<Property name="tooltipEnabled">cccTooltipEnabled</Property>
+			<Property name="tooltipFormat">cccTooltipFormat</Property>
+			<Property>dynamicSelectorsEnabled</Property>
+			<Property>indicatorMapping</Property>
+			<Property>zoomEnabled</Property>
+			<Property>exportButtonEnabled</Property>
+			<Property>svgFile</Property>
+			<Property>svgDatasource</Property>
+			<Property>svgDatasourceParameters</Property>
+			<Property>ratio</Property>
+			<Property>legend</Property>
+			<Property>paramsToDisplay</Property>
+		</Model>
+		<Implementation supportsLegacy="true" supportsAMD="true">
+			<Code src="SVG.js" />
+			<Styles>
+				<Style src="SVGComponent.css" version="1.0">SVGComponent</Style>
+			</Styles>
+			<Dependencies>
+				<Dependency src="geostats.min.js" version="1.6.0">Geostats</Dependency>
+				<Dependency src="simple-statistics.min.js" version="4.1.0">SimpleStatistics</Dependency>
+				<Dependency src="svg-pan-zoom.min.js" version="3.5.1">svgPanZoom</Dependency>
+				<Dependency src="d3.min.js" version="5.16.0">d3</Dependency>
+			</Dependencies>
+			<CustomProperties>
+				<DesignerProperty>
+					<Header>
+						<Name>svgFile</Name>
+						<Parent>BaseProperty</Parent>
+						<DefaultValue></DefaultValue>
+						<Description>SVG file</Description>
+						<Tooltip>SVG file to include</Tooltip>
+						<InputType>SvgFile</InputType>
+						<OutputType>String</OutputType>
+						<Order>0</Order>
+						<Advanced>false</Advanced>
+						<Version>1.0</Version>
+					</Header>
+				</DesignerProperty>
+				<DesignerProperty>
+					<Header>
+						<Name>svgDatasource</Name>
+						<Parent>BaseProperty</Parent>
+						<DefaultValue></DefaultValue>
+						<Description>SVG datasource</Description>
+						<Tooltip>SVG datasource to include</Tooltip>
+						<InputType>Datasource</InputType>
+						<OutputType>String</OutputType>
+						<Order>1</Order>
+						<Advanced>false</Advanced>
+						<Version>1.0</Version>
+					</Header>
+				</DesignerProperty>
+				<DesignerProperty>
+					<Header>
+						<Name>svgDatasourceParameters</Name>
+						<Parent>BaseProperty</Parent>
+						<DefaultValue></DefaultValue>
+						<Description>SVG datasource parameters</Description>
+						<Tooltip>Parameters to pass to the SVG datasource</Tooltip>
+						<InputType>ValuesArray</InputType>
+						<OutputType>Array</OutputType>
+						<Order>1</Order>
+						<Advanced>false</Advanced>
+						<Version>1.0</Version>
+					</Header>
+				</DesignerProperty>
+				<DesignerProperty>
+					<Header>
+						<Name>ratio</Name>
+						<Parent>BaseProperty</Parent>
+						<DefaultValue>100</DefaultValue>
+						<Description>Ratio</Description>
+						<Tooltip>Ratio of the SVG to its original image (in percentage)</Tooltip>
+						<InputType>Float</InputType>
+						<OutputType>Number</OutputType>
+						<Order>2</Order>
+						<Advanced>false</Advanced>
+						<Version>1.0</Version>
+					</Header>
+				</DesignerProperty>
+				<DesignerProperty>
+					<Header>
+						<Name>legend</Name>
+						<Parent>BaseProperty</Parent>
+						<DefaultValue></DefaultValue>
+						<Description>Legend</Description>
+						<Tooltip>Legend included on the SVG for its understanding</Tooltip>
+						<InputType>Legend</InputType>
+						<OutputType>Array</OutputType>
+						<Order>3</Order>
+						<Advanced>false</Advanced>
+						<Version>1.0</Version>
+					</Header>
+				</DesignerProperty>
+				<DesignerProperty>
+					<Header>
+						<Name>paramsToDisplay</Name>
+						<Parent>BaseProperty</Parent>
+						<DefaultValue></DefaultValue>
+						<Description>Parameters to display</Description>
+						<Tooltip>Parameters to be displayed in the SVG tooltip and their display name</Tooltip>
+						<InputType>ValuesArray</InputType>
+						<OutputType>Array</OutputType>
+						<Order>4</Order>
+						<Advanced>false</Advanced>
+						<Version>1.0</Version>
+					</Header>
+				</DesignerProperty>
+				<DesignerProperty>
+					<Header>
+						<Name>legendFormat</Name>
+						<Parent>BaseProperty</Parent>
+						<DefaultValue></DefaultValue>
+						<Description>legendFormat</Description>
+						<Tooltip>A callback function that is called to build the legend.</Tooltip>
+						<InputType>JavaScript</InputType>
+						<OutputType>Function</OutputType>
+						<Order>317</Order>
+						<Advanced>true</Advanced>
+						<Version>1.0</Version>
+					</Header>
+				</DesignerProperty>
+				<DesignerProperty>
+					<Header>
+						<Name>titleFormat</Name>
+						<Parent>BaseProperty</Parent>
+						<DefaultValue></DefaultValue>
+						<Description>titleFormat</Description>
+						<Tooltip>A callback function that is called to build the title.</Tooltip>
+						<InputType>JavaScript</InputType>
+						<OutputType>Function</OutputType>
+						<Order>482</Order>
+						<Advanced>true</Advanced>
+						<Version>1.0</Version>
+					</Header>
+				</DesignerProperty>
+				<DesignerProperty>
+					<Header>
+						<Name>dynamicSelectorsEnabled</Name>
+						<Parent>BaseProperty</Parent>
+						<DefaultValue>false</DefaultValue>
+						<Description>dynamicSelectorsEnabled</Description>
+						<Tooltip>Indicates if the dynamic selectors are enabled.</Tooltip>
+						<InputType>Boolean</InputType>
+						<OutputType>Boolean</OutputType>
+						<Order>540</Order>
+						<Advanced>true</Advanced>
+						<Version>1.0</Version>
+					</Header>
+				</DesignerProperty>
+				<DesignerProperty>
+					<Header>
+						<Name>indicatorMapping</Name>
+						<Parent>BaseProperty</Parent>
+						<DefaultValue></DefaultValue>
+						<Description>indicatorMapping</Description>
+						<Tooltip>Mapping between indicators' names and their corresponding queries.</Tooltip>
+						<InputType>IndicatorMappingArray</InputType>
+						<OutputType>Array</OutputType>
+						<Order>541</Order>
+						<Advanced>true</Advanced>
+						<Version>1.0</Version>
+					</Header>
+				</DesignerProperty>
+				<DesignerProperty>
+					<Header>
+						<Name>zoomEnabled</Name>
+						<Parent>BaseProperty</Parent>
+						<DefaultValue>false</DefaultValue>
+						<Description>zoomEnabled</Description>
+						<Tooltip>Indicates if the zoom feature is enabled.</Tooltip>
+						<InputType>Boolean</InputType>
+						<OutputType>Boolean</OutputType>
+						<Order>542</Order>
+						<Advanced>true</Advanced>
+						<Version>1.0</Version>
+					</Header>
+				</DesignerProperty>
+				<DesignerProperty>
+					<Header>
+						<Name>exportButtonEnabled</Name>
+						<Parent>BaseProperty</Parent>
+						<DefaultValue>false</DefaultValue>
+						<Description>exportButtonEnabled</Description>
+						<Tooltip>Indicates if the export button is enabled.</Tooltip>
+						<InputType>Boolean</InputType>
+						<OutputType>Boolean</OutputType>
+						<Order>543</Order>
+						<Advanced>true</Advanced>
+						<Version>1.0</Version>
+					</Header>
+				</DesignerProperty>
+			</CustomProperties>
+		</Implementation>
+	</Contents>
 </DesignerComponent>
