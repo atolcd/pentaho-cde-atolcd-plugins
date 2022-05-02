@@ -15,7 +15,7 @@ node('ovh') {
                     sh "zip -r ./atolcd-cde-plugin.zip atolcd-cde-plugin/"
                 }
                 withCredentials([usernameColonPassword(credentialsId: 'nexus3-jenkins', variable: 'NEXUS3_AUTH')]) {
-                    sh "curl -v --user $NEXUS3_AUTH --upload-file ./atolcd-cde-plugin.zip https://nexus3-ovh.priv.atolcd.com/repository/raw-atolcd-pentaho/atolcd-cde-plugin/atolcd-cde-plugin-${VERSION_NB}.zip"         }
+                    sh 'curl -v --user $NEXUS3_AUTH --upload-file ./atolcd-cde-plugin.zip https://nexus3-ovh.priv.atolcd.com/repository/raw-atolcd-pentaho/atolcd-cde-plugin/atolcd-cde-plugin-$VERSION_NB.zip'         }
         }
         }
   } catch (err) {
