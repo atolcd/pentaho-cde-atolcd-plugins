@@ -13,10 +13,8 @@ node('ovh') {
                 sh "rsync -avr ./* $TARGET --exclude $TARGET --exclude ./.git --exclude ./Jenkinsfile_release"
                 dir("${env.WORKSPACE}/") {
                     sh "zip -r ./atolcd-cde-plugin.zip atolcd-cde-plugin/"
+                    publishRawNexus(repository: "raw-atolcd-pentaho", remoteDir: "atolcd-cde-plugin", files: "atolcd-cde-plugin.zip", remoteFilename: "atolcd-cde-plugin-$VERSION_NB.zip")
                 }
-                withCredentials([usernameColonPassword(credentialsId: 'nexus3-jenkins', variable: 'NEXUS3_AUTH')]) {
-                    sh 'curl -v --user $NEXUS3_AUTH --upload-file ./atolcd-cde-plugin.zip https://nexus3-ovh.priv.atolcd.com/repository/raw-atolcd-pentaho/atolcd-cde-plugin/atolcd-cde-plugin-$VERSION_NB.zip'         }
-        }
         }
   } catch (err) {
         echo "Caught: ${err}"
